@@ -1,69 +1,103 @@
-import Image from "next/image";
+"use client"
+
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
+import { ServicesSection } from "@/components/home/ServicesSection"
+import { WhyChooseUsSection } from "@/components/home/WhyChooseUsSection"
+import { ProcessSection } from "@/components/home/ProcessSection"
+import { TestimonialSection } from "@/components/home/TestimonialSection"
+import { FAQSection } from "@/components/home/FAQSection"
+import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="flex flex-col w-full">
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-orange-50">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+        
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 flex flex-col items-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6 border border-primary/20 shadow-sm">
+              Govt. Services & Digital Solutions
+            </span>
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 drop-shadow-sm">
+              Your One Stop Solution for <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                Government Services
+              </span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto font-medium">
+              Fast • Reliable • Secure • Easy
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button size="lg" className="w-full sm:w-auto text-lg px-8 gap-2 group" asChild>
+                <Link href="/services">
+                  View Services
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="w-full sm:w-auto text-lg px-8" asChild>
+                <Link href="/contact">Contact Us</Link>
+              </Button>
+            </div>
+          </motion.div>
+
+          {/* Animated Counters */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl mt-20"
           >
-            Documentation
-          </a>
+            {[
+              { label: "Happy Customers", value: "100+" },
+              { label: "Services", value: "100+" },
+              { label: "Customer Satisfaction", value: "99%" }
+            ].map((stat, index) => (
+              <div key={index} className="bg-white/60 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white flex flex-col items-center justify-center transform transition-transform hover:-translate-y-2">
+                <span className="text-4xl font-bold text-primary mb-2">{stat.value}</span>
+                <span className="text-gray-600 font-medium">{stat.label}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
-      </main>
+      </section>
+
+      {/* About Section */}
+      <section className="py-24 bg-white" id="about">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
+          <motion.h2 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-bold mb-8 text-gray-900"
+          >
+            About <span className="text-primary">Mudra Online Services</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-lg text-gray-600 leading-relaxed"
+          >
+            Mudra Online Services is a trusted CSC Service Center dedicated to providing fast, reliable, and transparent government and digital services under one roof. We help citizens with documentation, registrations, certificates, tax filing, insurance, utility payments, and many other online services. Our goal is to make government services simple, accessible, and hassle-free for everyone.
+          </motion.p>
+        </div>
+      </section>
+
+      <ServicesSection />
+      <WhyChooseUsSection />
+      <ProcessSection />
+      <TestimonialSection />
+      <FAQSection />
     </div>
-  );
+  )
 }
+

@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #FFFFFF;
+  --foreground: #222222;
+
+  --primary: #0B2D89;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #F57C00;
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #F7F8FA;
+  --muted-foreground: #64748b;
+
+  --accent: #F57C00;
+  --accent-foreground: #FFFFFF;
+
+  --card: #FFFFFF;
+  --card-foreground: #222222;
+
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0B2D89;
+
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: #111111;
+  --foreground: #F7F8FA;
+
+  --primary: #4F80FF;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #FF9833;
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #222222;
+  --muted-foreground: #94a3b8;
+
+  --accent: #FF9833;
+  --accent-foreground: #FFFFFF;
+
+  --card: #1A1A1A;
+  --card-foreground: #F7F8FA;
+
+  --border: #333333;
+  --input: #333333;
+  --ring: #4F80FF;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
 }
