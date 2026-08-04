@@ -93,7 +93,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Mudra Online Services. All rights reserved.
           </p>
           <p className="text-primary-foreground/60 text-sm">
-            Powered by Premium Web Solutions
+            Powered by Mudra Online Services
           </p>
         </div>
       </div>
